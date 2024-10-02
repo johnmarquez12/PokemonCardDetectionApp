@@ -1,35 +1,58 @@
 import cv2
 import numpy as np
+from typing import Tuple
 
 class CardExtractor: 
+    
+    def __init__(self) -> None:
+        pass
 
-    def extract_card(image, canny_threshold1=50, canny_threshold2=150, output_size=(240, 330), min_area=60000):
-
-        width = output_size[0]
-        height = output_size[1]
-
+    def preprocess_image(self, image, canny_threshold1=50, canny_threshold2=150) -> cv2.typing.MatLike:
         kernel = np.ones((5,5), np.uint8)
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         blur = cv2.GaussianBlur(gray, (3, 3), 0)
-        edges = cv2.Canny(blur, canny_threshold1, canny_threshold2)
-        edges = cv2.morphologyEx(edges, cv2.MORPH_CLOSE, kernel=kernel)
+        bilateral_filter = cv2.bilateralFilter(gray, 15, 75, 75)
+        # otsu_thresh, _ = cv2.threshold(bilateral_filter, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        th = cv2.adaptiveThreshold(bilateral_filter, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 25, 5)
+
+        # lower_thresh = int(otsu_thresh * 0.2)
+        # upper_thresh = int(otsu_thresh * 0.5)
+
+        edges = cv2.Canny(th, canny_threshold1, canny_threshold2)
+
+        # frameDial = cv2.dilate(edges, kernel, iterations=2)
+        # frameThreshold = cv2.erode(frameDial, kernel, iterations=1)
+        
+        # edges = cv2.morphologyEx(edges, cv2.MORPH_CLOSE, kernel=kernel)
+
+        return edges
+
+
+    def extract_card(self, image, canny_threshold1=50, canny_threshold2=150, output_size=(240, 330), min_area=70000) -> Tuple[cv2.typing.MatLike, cv2.typing.MatLike]:
+
+        width = output_size[0]
+        height = output_size[1]
+        
         # edges = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
         # retval, edges = cv2.threshold(gray, thresh=100, maxval=255, type=cv2.THRESH_BINARY_INV)
         # Find contours and filter for cards using contour area
+
+        edges = self.preprocess_image(image)
+
         contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
         if contours:
             # Find the largest contour, assuming it's the Pokémon card
-            largest_contour = max(contours, key=cv2.contourArea)
+            largest_contour = max(contours, key=cv2.contourArea)    
+            hull = cv2.convexHull(largest_contour)
 
             # Approximate the contour to a polygon (should be a quadrilateral)
-            epsilon = 0.02 * cv2.arcLength(largest_contour, True)
+            epsilon = 0.02 * cv2.arcLength(hull, True)
             approx = cv2.approxPolyDP(largest_contour, epsilon, True)
+
             if cv2.contourArea(largest_contour) > min_area:
             # Check if the approximated contour has 4 points (i.e., it's a quadrilateral)
-                if len(approx) == 4:
-                    # print(largest_contour)
-
+                if len(approx) == 4 and self.contour_matches_aspect_ratio(largest_contour):
                     points = []
 
                     for point in approx:
@@ -56,21 +79,18 @@ class CardExtractor:
                     matrix = cv2.getPerspectiveTransform(card, cardWarped)
                     imgOutput = cv2.warpPerspective(image, matrix, (width, height))
                     return imgOutput, edges
-                    # Sort the points in clockwise order
-                    # points = np.array(sorted(approx.reshape(4, 2), key=lambda x: x[0] + x[1]))
-
-                    # # Define the destination points for the perspective transform
-                    # (tl, tr, br, bl) = points
-                    # dst = np.array([[0, 0], [output_size[0] - 1, 0], [output_size[0] - 1, output_size[1] - 1], [0, output_size[1] - 1]], dtype="float32")
-
-                    # # Compute the perspective transform matrix and apply it
-                    # M = cv2.getPerspectiveTransform(points.astype("float32"), dst)
-                    # warped = cv2.warpPerspective(frame, M, output_size)
-
-                    # return warped, edges
 
         # If no contours or no valid quadrilateral contour was found, return None
         return None, edges
+
+    def contour_matches_aspect_ratio(self, contour, dimensions=(3.5, 2.5), tolerance=0.1) -> bool:
+        expected_aspect_ratio = dimensions[0] / dimensions[1]
+
+        (x, y, w, h) = cv2.boundingRect(contour)
+
+        aspect_ratio = float(w) / h if w > h else float(h) / w
+
+        return (expected_aspect_ratio - tolerance) <= aspect_ratio <= (expected_aspect_ratio + tolerance)
 
 
 

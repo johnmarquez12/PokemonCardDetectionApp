@@ -6,7 +6,7 @@ import pandas as pd
 import os
 from pokemoncardmatcher import PokemonCardMatcher
 from pathlib import Path
-from cardextractor import CardExtractor
+from edgedetection.cardextractor import CardExtractor
 
 card_matcher = PokemonCardMatcher(path=Path("pokemon-tcg-image-data.csv"))
 
@@ -31,6 +31,7 @@ def convert_to_pillow(cv_image):
 def main():
     # Initialize the webcam
     cap = cv2.VideoCapture(1)
+    card_extractor = CardExtractor()
 
     while True:
         # Capture frame-by-frame
@@ -52,7 +53,7 @@ def main():
         key = cv2.waitKey(1) & 0xFF
 
         # if key == ord('d'):
-        cropped_card, edges = CardExtractor.extract_card(roi, canny_threshold1=50, canny_threshold2=140)
+        cropped_card, edges = card_extractor.extract_card(roi, canny_threshold1=50, canny_threshold2=150)
         cv2.imshow('edges', edges)
     
         if cropped_card is not None:
