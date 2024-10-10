@@ -14,7 +14,7 @@ def main():
     
     # Define the flags and arguments
     parser.add_argument('--images', type=str, help='Path to the directory containing images.', required=True)
-    parser.add_argument('--bounding_boxes', action='store_true', help='If specified, process bounding boxes for the images.')
+    parser.add_argument('--bounding_boxes', type=str, help='If specified, process bounding boxes for the images.')
     parser.add_argument('--backgrounds', type=str, help='Path to the directory containing background images.', required=True)
     parser.add_argument('--output_width', type=int, help='output width of images')
     parser.add_argument('--output_height', type=int, help='output height of images')
@@ -28,7 +28,7 @@ def main():
         return
     
     if args.bounding_boxes:
-        datapipelinehelper.process_with_bounding_boxes(images_path=Path(args.images), backgrounds_path=Path(args.backgrounds))
+        datapipelinehelper.process_with_bounding_boxes(images_path=Path(args.images), bounding_boxes_path=Path(args.bounding_boxes), backgrounds_path=Path(args.backgrounds), output_path=Path(args.output_dir))
         return
     
     datapipelinehelper.process_without_bounding_boxes(images_path=Path(args.images), 
