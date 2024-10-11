@@ -2,7 +2,8 @@ import cv2
 import random
 import numpy as np
 from pathlib import Path
-import os
+from readwritehelpers import save_all, read_obb_points
+import cvzone
 
 def process_with_bounding_boxes(images_path: Path, bounding_boxes_path: Path, backgrounds_path: Path, output_path: Path, output_width=640, output_height=640):
     for image_path in images_path.iterdir():
@@ -30,9 +31,6 @@ def process_with_bounding_boxes(images_path: Path, bounding_boxes_path: Path, ba
 def process_without_bounding_boxes(images_path: Path, backgrounds_path: Path, output_path: Path, output_width=640, output_height=640):
     pass
 
-def save_all(filename, image: cv2.typing.MatLike, points, output_path: Path):
-    save_obb_points(points, filename, output_path / "labels", 0)
-    save_image(image, filename, output_path / "images")
 
 def apply_transformation(points, matrix):
     """Applies a transformation matrix to OBB points."""
@@ -40,28 +38,74 @@ def apply_transformation(points, matrix):
     transformed_points = cv2.perspectiveTransform(points, matrix)
     return transformed_points.reshape(-1, 2).tolist()
 
-def superimpose_image(image: cv2.typing.MatLike , background: cv2.typing.MatLike, obb_points):
-    image_scaled = scale_image_to_background(image, background)
+def rotate_image_and_points(image: cv2.typing.MatLike, obb_points, angle: int):
+    img_h, img_w = image.shape[:2]
 
+    cos_angle = np.abs(np.cos(np.radians(angle)))
+    sin_angle = np.abs(np.sin(np.radians(angle)))
+
+    new_w = int(img_h * sin_angle + img_w * cos_angle)
+    new_h = int(img_h * cos_angle + img_w * sin_angle)
+
+    M = cv2.getRotationMatrix2D((img_w // 2, img_h // 2), angle, 1.0)
+
+    # Adjust the matrix to move the image to the center of the new canvas
+    M[0, 2] += (new_w - img_w) // 2
+    M[1, 2] += (new_h - img_h) // 2
+    
+    transparent_img = np.zeros((new_h, new_w, 4), dtype=np.uint8)
+
+    rotated_image = cv2.warpAffine(image, M, dsize=(new_w, new_h), dst=transparent_img, borderMode=cv2.BORDER_TRANSPARENT, flags=cv2.INTER_LINEAR)
+    obb_points_arr = np.array(obb_points)
+
+    obb_points_abs = obb_points_arr * [img_w, img_h]
+
+    ones = np.ones((obb_points_abs.shape[0], 1))
+    points_ones = np.hstack([obb_points_abs, ones])
+
+    rotated_points = M.dot(points_ones.T).T
+
+    obb_points_rotated_normalized = rotated_points[:, :2] / [new_w, new_h]
+
+    return rotated_image, obb_points_rotated_normalized
+
+def superimpose_image(image: cv2.typing.MatLike , background: cv2.typing.MatLike, obb_points):
+
+    background = cv2.cvtColor(background, cv2.COLOR_BGR2BGRA)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2BGRA)
+
+    ## rotate image + points
+    rotation_angle = random.uniform(-30, 30)
+
+    rotated_img, rotated_obb_points = rotate_image_and_points(image, obb_points, rotation_angle)
+
+    cv2.imwrite('test.png', rotated_img)
+
+    ## resize rotated image to ensure fits in bounds of background
+    image_scaled = scale_image_to_background(rotated_img, background)
+
+    ## scale down and fit into background
     img_h, img_w = image_scaled.shape[:2]
     bg_h, bg_w = background.shape[:2]
 
-    obb_points_abs = [(x * img_w, y * img_h) for x, y in obb_points]
+    obb_points_abs = [(x * img_w, y * img_h) for x, y in rotated_obb_points]
     
     scale_factor = random.uniform(0.25, 0.9)
     new_img_w = int(img_w * scale_factor)
     new_img_h = int(img_h * scale_factor)
-    resized_image = cv2.resize(image, (new_img_w, new_img_h))
+    resized_image = cv2.resize(image_scaled, (new_img_w, new_img_h))
 
     x_offset = random.randint(0, bg_w - new_img_w)
     y_offset = random.randint(0, bg_h - new_img_h)
-    background[y_offset:y_offset+new_img_h, x_offset:x_offset+new_img_w] = resized_image
+    superimposed_image = cvzone.overlayPNG(background, resized_image, [x_offset, y_offset])
+    # background[y_offset:y_offset+new_img_h, x_offset:x_offset+new_img_w] = resized_image
 
     # Calculate the scaling matrix for the resize
     scaling_matrix = np.array([[scale_factor, 0, 0], 
                                [0, scale_factor, 0], 
                                [0, 0, 1]])
     
+    ## normalize points onto background
     transformed_obb_points = apply_transformation(obb_points_abs, scaling_matrix)
 
     # Translate the points by the offset where the image is placed on the background
@@ -70,7 +114,7 @@ def superimpose_image(image: cv2.typing.MatLike , background: cv2.typing.MatLike
     # Now normalize the OBB points relative to the background dimensions
     normalized_obb_points = [(x / bg_w, y / bg_h) for x, y in translated_obb_points]
 
-    return background, normalized_obb_points
+    return superimposed_image, normalized_obb_points
 
 def scale_image(image: cv2.typing.MatLike, target_size=(640, 640)):    
     resized_image = cv2.resize(image, target_size)
@@ -108,79 +152,11 @@ def scale_image_to_background(image: cv2.typing.MatLike, background: cv2.typing.
     # Now the image fits within the background, return the resized image
     return resized_image
 
-def read_obb_points(filepath: Path):
-    with filepath.open('r') as file:
-        lines = file.readlines()
-        # Iterate over each line in the file
-        for line in lines:
-            # Split the line by spaces to extract the values
-            values = line.strip().split()
-            
-            # Next 8 values are the coordinates (x1, y1, x2, y2, x3, y3, x4, y4)
-            x1, y1 = float(values[1]) , float(values[2]) 
-            x2, y2 = float(values[3]) , float(values[4]) 
-            x3, y3 = float(values[5]) , float(values[6]) 
-            x4, y4 = float(values[7]) , float(values[8]) 
-            
-            # Create an array of points (OpenCV expects the points in integer format)
-            return [(x1, y1), (x2, y2), (x3, y3), (x4, y4)]
-
-def save_obb_points(obb_points, filename, output_dir: Path, class_index):
-    output_file = output_dir / f"{filename}.txt"
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    with output_file.open('w') as file:
-        
-        (x1, y1), (x2, y2), (x3, y3), (x4, y4) = obb_points
-        
-        # Format the bounding box into the YOLO OBB format
-        formatted_line = f"{class_index} {x1:.6f} {y1:.6f} {x2:.6f} {y2:.6f} {x3:.6f} {y3:.6f} {x4:.6f} {y4:.6f}\n"
-        
-        # Write the formatted line to the file
-        file.write(formatted_line)
-
-def save_image(image: cv2.typing.MatLike, filename, output_dir: Path):
-    output_file = output_dir / f"{filename}.jpg"
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    success = cv2.imwrite(str(output_file), image)
-
-    if success:
-        print(f"Image saved successfully to {output_file}")
-    else:
-        print(f"Failed to save image: {output_file}")
 
 
-# og_image = cv2.imread('/home/ajxz12/projects/pokemoncarddetection/data-pipeline/generated/images/SV05_EN_50_png.rf.4b3b041bd71800d81501489b95e5a477background.jpg')
-# obb_points = read_obb_points('pokemoncardslabs.v1i.yolov8-obb/train/labels/slab1_webp.rf.7a205e379663f44c0de5afe1ee5793fd.txt')
-# background = cv2.imread('background.jpeg')
 
-# new_bg, points = superimpose_image(og_image, background, obb_points)
-# new_bg = scale_image(new_bg)
 
-new_bg = cv2.imread('generated/images/SV05_EN_50_png.rf.4b3b041bd71800d81501489b95e5a477background.jpg')
-points = read_obb_points(Path('generated/labels/SV05_EN_50_png.rf.4b3b041bd71800d81501489b95e5a477background.txt'))
-img_height, img_width = new_bg.shape[:2]
 
-# Next 8 values are the coordinates (x1, y1, x2, y2, x3, y3, x4, y4)
-x1, y1 = float(points[0][0]) * img_width, float(points[0][1]) * img_height
-x2, y2 = float(points[1][0]) * img_width, float(points[1][1]) * img_height
-x3, y3 = float(points[2][0]) * img_width, float(points[2][1]) * img_height
-x4, y4 = float(points[3][0]) * img_width, float(points[3][1]) * img_height
-
-# Create an array of points (OpenCV expects the points in integer format)
-points = np.array([[x1, y1], [x2, y2], [x3, y3], [x4, y4]], np.int32)
-
-# Reshape the points to the format required by OpenCV
-points = points.reshape((-1, 1, 2))
-
-# Draw the OBB (closed polygon) on the image (you can change the color and thickness)
-cv2.polylines(new_bg, [points], isClosed=True, color=(0, 255, 0), thickness=2)
-
-# Show the resulting image with the OBBs
-cv2.imshow('Oriented Bounding Boxes', new_bg)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
 
 
 

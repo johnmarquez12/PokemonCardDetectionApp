@@ -35,7 +35,5 @@ def main():
         bounding_boxes_path=Path(args.bounding_boxes),
         backgrounds_path=Path(args.backgrounds))
 
-    
-
 if __name__ == "__main__":
     main()
