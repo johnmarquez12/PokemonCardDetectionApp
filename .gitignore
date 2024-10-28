@@ -1,3 +1,5 @@
 /env
 __pycache__
 pokemon-tcg-image-data.csv
+.vscode
+pokemoncarddetector.v*
