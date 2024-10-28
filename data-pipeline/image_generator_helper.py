@@ -2,7 +2,7 @@ import cv2
 import random
 import numpy as np
 from pathlib import Path
-from readwritehelpers import save_all, read_obb_points
+from read_write_helpers import save_all, read_obb_points
 import cvzone
 
 def process_with_bounding_boxes(images_path: Path, bounding_boxes_path: Path, backgrounds_path: Path, output_path: Path, output_width=640, output_height=640):

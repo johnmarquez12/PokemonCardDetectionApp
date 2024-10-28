@@ -4,7 +4,7 @@ import imagehash
 from PIL import Image
 import pandas as pd
 import os
-from pokemoncardmatcher import PokemonCardMatcher
+from card_matching.pokemoncardmatcher import PokemonCardMatcher
 from pathlib import Path
 from edgedetection.cardextractor import CardExtractor
 

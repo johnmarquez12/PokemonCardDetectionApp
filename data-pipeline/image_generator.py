@@ -25,12 +25,12 @@ def main():
         print(f"Error: The directory {args.images} does not exist.")
         return
     
-    if args.bounding_boxes:
+    if args.labels:
         image_generator_helper.process_with_bounding_boxes(images_path=Path(args.images), bounding_boxes_path=Path(args.labels), backgrounds_path=Path(args.backgrounds), output_path=Path(args.output_dir))
         return
     
     image_generator_helper.process_without_bounding_boxes(images_path=Path(args.images), 
-        bounding_boxes_path=Path(args.bounding_boxes),
+        bounding_boxes_path=Path(args.labels),
         backgrounds_path=Path(args.backgrounds))
 
 if __name__ == "__main__":

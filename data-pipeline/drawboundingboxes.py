@@ -34,10 +34,10 @@ def main():
     parser = argparse.ArgumentParser(description="Draw bounding boxes for yolov8 OBB")
 
     parser.add_argument('--image', type=str, help='Path to image', required=True)
-    parser.add_argument('--obb', type=str, help='Path to Yolov8 OBB txt file.', required=True)
+    parser.add_argument('--label', type=str, help='Path to Yolov8 OBB txt file.', required=True)
 
     args = parser.parse_args()
-    draw_obbs(args.image, args.obb)
+    draw_obbs(args.image, args.label)
 
 if __name__ == "__main__":
     main()
