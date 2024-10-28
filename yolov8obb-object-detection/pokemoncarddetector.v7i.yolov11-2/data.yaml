@@ -1,0 +1,15 @@
+path: C:\Users\johnb\Projects\pokemoncarddetection\yolov8obb-object-detection\pokemoncarddetector.v7i.yolov11-2
+
+train: train\images
+val: valid\images
+test: test\images
+
+nc: 1
+names: ['card']
+
+roboflow:
+  workspace: pokemoncarddetection
+  project: pokemoncarddetector
+  version: 7
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/pokemoncarddetection/pokemoncarddetector/dataset/7
