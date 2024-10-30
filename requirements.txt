@@ -1,0 +1,13 @@
+albumentations==1.4.20
+cvzone==1.6.1
+imagehash==4.3.1
+matplotlib==3.9.2
+numpy==2.1.2
+opencv_python==4.10.0.84
+pandas==2.2.3
+Pillow==11.0.0
+pip==23.0.1
+quadrilateral_fitter==1.12
+supervision==0.24.0
+torch==2.5.1
+ultralytics==8.3.25
