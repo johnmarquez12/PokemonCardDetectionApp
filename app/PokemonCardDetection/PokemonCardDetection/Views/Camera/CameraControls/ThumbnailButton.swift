@@ -1,0 +1,49 @@
+//
+//  ThumbnailButton.swift
+//  PokemonCardDetection
+//
+//  Created by John Marquez on 2024-11-30.
+//
+
+/*
+See the LICENSE.txt file for this sample’s licensing information.
+
+Abstract:
+A view that displays a thumbnail of the last captured media.
+*/
+
+import SwiftUI
+import PhotosUI
+import SwiftUICore
+
+/// A view that displays a thumbnail of the last captured media.
+///
+/// Tapping the view opens the Photos picker.
+struct ThumbnailButton<CameraModel: Camera>: View {
+    
+    @State var cameraModel: CameraModel
+    
+    @State private var selectedItems: [PhotosPickerItem] = []
+    
+    var body: some View {
+        PhotosPicker( selection: $selectedItems, matching: .images, photoLibrary: .shared()) {
+            thumbnail
+        }
+        .frame(width: 64.0, height: 64.0)
+        .cornerRadius(8)
+        .disabled(cameraModel.captureActivity.isRecording)
+    }
+    
+    @ViewBuilder
+    var thumbnail: some View {
+        if let thumbnail = cameraModel.thumbnail {
+            Image(thumbnail)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .animation(.easeInOut(duration: 0.3), value: thumbnail)
+        } else {
+            Image(systemName: "photo.on.rectangle")
+        }
+    }
+}
+

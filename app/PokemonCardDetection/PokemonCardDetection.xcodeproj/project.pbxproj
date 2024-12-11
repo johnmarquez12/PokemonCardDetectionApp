@@ -3,17 +3,42 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A6820A952CD2C7FB003E50C1 /* PokemonCardDetectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6820A942CD2C7FB003E50C1 /* PokemonCardDetectionApp.swift */; };
-		A6820A972CD2C7FB003E50C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6820A962CD2C7FB003E50C1 /* ContentView.swift */; };
 		A6820A992CD2C7FD003E50C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6820A982CD2C7FD003E50C1 /* Assets.xcassets */; };
 		A6820A9C2CD2C7FD003E50C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6820A9B2CD2C7FD003E50C1 /* Preview Assets.xcassets */; };
 		A6820AA62CD2C7FD003E50C1 /* PokemonCardDetectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6820AA52CD2C7FD003E50C1 /* PokemonCardDetectionTests.swift */; };
 		A6820AB02CD2C7FD003E50C1 /* PokemonCardDetectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6820AAF2CD2C7FD003E50C1 /* PokemonCardDetectionUITests.swift */; };
 		A6820AB22CD2C7FD003E50C1 /* PokemonCardDetectionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6820AB12CD2C7FD003E50C1 /* PokemonCardDetectionUITestsLaunchTests.swift */; };
+		A6820ACB2CD84EB1003E50C1 /* CardDetection.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = A6820ACA2CD84EB1003E50C1 /* CardDetection.mlpackage */; };
+		A6959DB12CDF366300FA15F2 /* CaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DB02CDF366300FA15F2 /* CaptureService.swift */; };
+		A6959DB32CDF376500FA15F2 /* PhotoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DB22CDF375F00FA15F2 /* PhotoCapture.swift */; };
+		A6959DB52CE6E5B500FA15F2 /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DB42CE6E5B200FA15F2 /* DataTypes.swift */; };
+		A6959DB72CEACE7400FA15F2 /* DeviceFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DB62CEACE7100FA15F2 /* DeviceFinder.swift */; };
+		A6959DB92CEACF3500FA15F2 /* OutputService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DB82CEACF3100FA15F2 /* OutputService.swift */; };
+		A6959DBC2CEAD21400FA15F2 /* SystemPreferredCameraObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DBB2CEAD20C00FA15F2 /* SystemPreferredCameraObserver.swift */; };
+		A6959DBE2CEB02BD00FA15F2 /* PreviewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DBD2CEB02BA00FA15F2 /* PreviewSource.swift */; };
+		A6959DC32CEFDFFE00FA15F2 /* CaptureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DC22CEFDFFA00FA15F2 /* CaptureExtensions.swift */; };
+		A6959DC62CF1B20D00FA15F2 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DC52CF1B20900FA15F2 /* CameraModel.swift */; };
+		A6959DC82CF2882300FA15F2 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DC72CF2881E00FA15F2 /* Camera.swift */; };
+		A6959DCA2CF308DE00FA15F2 /* MediaLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DC92CF308D900FA15F2 /* MediaLibrary.swift */; };
+		A6959DCC2CF6EB1D00FA15F2 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DCB2CF6EB1900FA15F2 /* CameraView.swift */; };
+		A6959DCE2CF7E2B500FA15F2 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DCD2CF7E2B100FA15F2 /* PreviewContainer.swift */; };
+		A6959DD02CF7E8EA00FA15F2 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DCF2CF7E8E800FA15F2 /* CameraPreview.swift */; };
+		A6959DD22CFB095900FA15F2 /* CameraUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DD12CFB095500FA15F2 /* CameraUI.swift */; };
+		A6959DD42CFB0CC700FA15F2 /* CameraControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DD32CFB0CC100FA15F2 /* CameraControls.swift */; };
+		A6959DD62CFB0D2B00FA15F2 /* ThumbnailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DD52CFB0D2500FA15F2 /* ThumbnailButton.swift */; };
+		A6959DD82CFB0FDF00FA15F2 /* CaptureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DD72CFB0FDB00FA15F2 /* CaptureButton.swift */; };
+		A6959DDA2CFB106200FA15F2 /* PreviewCameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DD92CFB105E00FA15F2 /* PreviewCameraModel.swift */; };
+		A6959DDC2CFC65C300FA15F2 /* SwitchCameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DDB2CFC65BE00FA15F2 /* SwitchCameraButton.swift */; };
+		A6959DDE2CFC65F800FA15F2 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DDD2CFC65F500FA15F2 /* ViewExtensions.swift */; };
+		A6959DE02CFCDDDB00FA15F2 /* StatusOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DDF2CFCDDD400FA15F2 /* StatusOverlayView.swift */; };
+		A6959DE62D01774800FA15F2 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DE52D01774600FA15F2 /* AppView.swift */; };
+		A6959DE82D01779C00FA15F2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DE72D01779900FA15F2 /* HomeView.swift */; };
+		A6959DEB2D024E9100FA15F2 /* CardDetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6959DEA2D024E8B00FA15F2 /* CardDetectionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +61,6 @@
 /* Begin PBXFileReference section */
 		A6820A912CD2C7FB003E50C1 /* PokemonCardDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonCardDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6820A942CD2C7FB003E50C1 /* PokemonCardDetectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCardDetectionApp.swift; sourceTree = "<group>"; };
-		A6820A962CD2C7FB003E50C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A6820A982CD2C7FD003E50C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6820A9B2CD2C7FD003E50C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A6820AA12CD2C7FD003E50C1 /* PokemonCardDetectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonCardDetectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +68,32 @@
 		A6820AAB2CD2C7FD003E50C1 /* PokemonCardDetectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonCardDetectionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6820AAF2CD2C7FD003E50C1 /* PokemonCardDetectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCardDetectionUITests.swift; sourceTree = "<group>"; };
 		A6820AB12CD2C7FD003E50C1 /* PokemonCardDetectionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCardDetectionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A6820ACA2CD84EB1003E50C1 /* CardDetection.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CardDetection.mlpackage; sourceTree = "<group>"; };
+		A6959DB02CDF366300FA15F2 /* CaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureService.swift; sourceTree = "<group>"; };
+		A6959DB22CDF375F00FA15F2 /* PhotoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCapture.swift; sourceTree = "<group>"; };
+		A6959DB42CE6E5B200FA15F2 /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
+		A6959DB62CEACE7100FA15F2 /* DeviceFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFinder.swift; sourceTree = "<group>"; };
+		A6959DB82CEACF3100FA15F2 /* OutputService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputService.swift; sourceTree = "<group>"; };
+		A6959DBB2CEAD20C00FA15F2 /* SystemPreferredCameraObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemPreferredCameraObserver.swift; sourceTree = "<group>"; };
+		A6959DBD2CEB02BA00FA15F2 /* PreviewSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSource.swift; sourceTree = "<group>"; };
+		A6959DC22CEFDFFA00FA15F2 /* CaptureExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureExtensions.swift; sourceTree = "<group>"; };
+		A6959DC52CF1B20900FA15F2 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
+		A6959DC72CF2881E00FA15F2 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		A6959DC92CF308D900FA15F2 /* MediaLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibrary.swift; sourceTree = "<group>"; };
+		A6959DCB2CF6EB1900FA15F2 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		A6959DCD2CF7E2B100FA15F2 /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
+		A6959DCF2CF7E8E800FA15F2 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		A6959DD12CFB095500FA15F2 /* CameraUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraUI.swift; sourceTree = "<group>"; };
+		A6959DD32CFB0CC100FA15F2 /* CameraControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControls.swift; sourceTree = "<group>"; };
+		A6959DD52CFB0D2500FA15F2 /* ThumbnailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailButton.swift; sourceTree = "<group>"; };
+		A6959DD72CFB0FDB00FA15F2 /* CaptureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureButton.swift; sourceTree = "<group>"; };
+		A6959DD92CFB105E00FA15F2 /* PreviewCameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCameraModel.swift; sourceTree = "<group>"; };
+		A6959DDB2CFC65BE00FA15F2 /* SwitchCameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCameraButton.swift; sourceTree = "<group>"; };
+		A6959DDD2CFC65F500FA15F2 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		A6959DDF2CFCDDD400FA15F2 /* StatusOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusOverlayView.swift; sourceTree = "<group>"; };
+		A6959DE52D01774600FA15F2 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		A6959DE72D01779900FA15F2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A6959DEA2D024E8B00FA15F2 /* CardDetectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetectionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +144,23 @@
 		A6820A932CD2C7FB003E50C1 /* PokemonCardDetection */ = {
 			isa = PBXGroup;
 			children = (
-				A6820A942CD2C7FB003E50C1 /* PokemonCardDetectionApp.swift */,
-				A6820A962CD2C7FB003E50C1 /* ContentView.swift */,
+				A6959DEA2D024E8B00FA15F2 /* CardDetectionManager.swift */,
+				A6959DD92CFB105E00FA15F2 /* PreviewCameraModel.swift */,
+				A6959DC92CF308D900FA15F2 /* MediaLibrary.swift */,
+				A6959DC72CF2881E00FA15F2 /* Camera.swift */,
+				A6959DC52CF1B20900FA15F2 /* CameraModel.swift */,
+				A6959DC22CEFDFFA00FA15F2 /* CaptureExtensions.swift */,
+				A6959DBD2CEB02BA00FA15F2 /* PreviewSource.swift */,
+				A6959DBB2CEAD20C00FA15F2 /* SystemPreferredCameraObserver.swift */,
+				A6959DB82CEACF3100FA15F2 /* OutputService.swift */,
+				A6959DB62CEACE7100FA15F2 /* DeviceFinder.swift */,
+				A6959DB42CE6E5B200FA15F2 /* DataTypes.swift */,
+				A6959DB22CDF375F00FA15F2 /* PhotoCapture.swift */,
+				A6959DB02CDF366300FA15F2 /* CaptureService.swift */,
+				A6820ACA2CD84EB1003E50C1 /* CardDetection.mlpackage */,
+				A6820AC52CD57ADC003E50C1 /* ViewModels */,
+				A6820AC22CD56DA1003E50C1 /* Main */,
+				A6820ABF2CD56A60003E50C1 /* Views */,
 				A6820A982CD2C7FD003E50C1 /* Assets.xcassets */,
 				A6820A9A2CD2C7FD003E50C1 /* Preview Content */,
 			);
@@ -125,6 +190,72 @@
 				A6820AB12CD2C7FD003E50C1 /* PokemonCardDetectionUITestsLaunchTests.swift */,
 			);
 			path = PokemonCardDetectionUITests;
+			sourceTree = "<group>";
+		};
+		A6820ABF2CD56A60003E50C1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A6959DE92D018FD300FA15F2 /* Home */,
+				A6959DE32D01767800FA15F2 /* Camera */,
+				A6959DE22D01766D00FA15F2 /* App */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A6820AC22CD56DA1003E50C1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A6820A942CD2C7FB003E50C1 /* PokemonCardDetectionApp.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A6820AC52CD57ADC003E50C1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A6959DE22D01766D00FA15F2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A6959DE52D01774600FA15F2 /* AppView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A6959DE32D01767800FA15F2 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				A6959DE42D0176AA00FA15F2 /* CameraControls */,
+				A6959DDD2CFC65F500FA15F2 /* ViewExtensions.swift */,
+				A6959DDF2CFCDDD400FA15F2 /* StatusOverlayView.swift */,
+				A6959DD12CFB095500FA15F2 /* CameraUI.swift */,
+				A6959DCF2CF7E8E800FA15F2 /* CameraPreview.swift */,
+				A6959DCB2CF6EB1900FA15F2 /* CameraView.swift */,
+				A6959DCD2CF7E2B100FA15F2 /* PreviewContainer.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		A6959DE42D0176AA00FA15F2 /* CameraControls */ = {
+			isa = PBXGroup;
+			children = (
+				A6959DD72CFB0FDB00FA15F2 /* CaptureButton.swift */,
+				A6959DD52CFB0D2500FA15F2 /* ThumbnailButton.swift */,
+				A6959DD32CFB0CC100FA15F2 /* CameraControls.swift */,
+				A6959DDB2CFC65BE00FA15F2 /* SwitchCameraButton.swift */,
+			);
+			path = CameraControls;
+			sourceTree = "<group>";
+		};
+		A6959DE92D018FD300FA15F2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A6959DE72D01779900FA15F2 /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,7 +322,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					A6820A902CD2C7FB003E50C1 = {
 						CreatedOnToolsVersion = 15.2;
@@ -207,7 +338,6 @@
 				};
 			};
 			buildConfigurationList = A6820A8C2CD2C7FB003E50C1 /* Build configuration list for PBXProject "PokemonCardDetection" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -215,6 +345,7 @@
 				Base,
 			);
 			mainGroup = A6820A882CD2C7FB003E50C1;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = A6820A922CD2C7FB003E50C1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +388,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6820A972CD2C7FB003E50C1 /* ContentView.swift in Sources */,
+				A6959DDC2CFC65C300FA15F2 /* SwitchCameraButton.swift in Sources */,
+				A6959DD82CFB0FDF00FA15F2 /* CaptureButton.swift in Sources */,
+				A6959DCA2CF308DE00FA15F2 /* MediaLibrary.swift in Sources */,
+				A6959DE62D01774800FA15F2 /* AppView.swift in Sources */,
+				A6959DB12CDF366300FA15F2 /* CaptureService.swift in Sources */,
 				A6820A952CD2C7FB003E50C1 /* PokemonCardDetectionApp.swift in Sources */,
+				A6820ACB2CD84EB1003E50C1 /* CardDetection.mlpackage in Sources */,
+				A6959DD22CFB095900FA15F2 /* CameraUI.swift in Sources */,
+				A6959DB72CEACE7400FA15F2 /* DeviceFinder.swift in Sources */,
+				A6959DB52CE6E5B500FA15F2 /* DataTypes.swift in Sources */,
+				A6959DEB2D024E9100FA15F2 /* CardDetectionManager.swift in Sources */,
+				A6959DDE2CFC65F800FA15F2 /* ViewExtensions.swift in Sources */,
+				A6959DB92CEACF3500FA15F2 /* OutputService.swift in Sources */,
+				A6959DE02CFCDDDB00FA15F2 /* StatusOverlayView.swift in Sources */,
+				A6959DB32CDF376500FA15F2 /* PhotoCapture.swift in Sources */,
+				A6959DC62CF1B20D00FA15F2 /* CameraModel.swift in Sources */,
+				A6959DE82D01779C00FA15F2 /* HomeView.swift in Sources */,
+				A6959DCE2CF7E2B500FA15F2 /* PreviewContainer.swift in Sources */,
+				A6959DCC2CF6EB1D00FA15F2 /* CameraView.swift in Sources */,
+				A6959DC82CF2882300FA15F2 /* Camera.swift in Sources */,
+				A6959DD02CF7E8EA00FA15F2 /* CameraPreview.swift in Sources */,
+				A6959DBC2CEAD21400FA15F2 /* SystemPreferredCameraObserver.swift in Sources */,
+				A6959DD62CFB0D2B00FA15F2 /* ThumbnailButton.swift in Sources */,
+				A6959DC32CEFDFFE00FA15F2 /* CaptureExtensions.swift in Sources */,
+				A6959DDA2CFB106200FA15F2 /* PreviewCameraModel.swift in Sources */,
+				A6959DD42CFB0CC700FA15F2 /* CameraControls.swift in Sources */,
+				A6959DBE2CEB02BD00FA15F2 /* PreviewSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,11 +581,17 @@
 				DEVELOPMENT_TEAM = PM28RN486U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokemonCardDetection/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Detects cards to determine which Pokemon Card is in the image.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Selected photos will be used to determine the pokemon card from the image";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,11 +616,17 @@
 				DEVELOPMENT_TEAM = PM28RN486U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokemonCardDetection/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Detects cards to determine which Pokemon Card is in the image.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Selected photos will be used to determine the pokemon card from the image";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,13 +643,12 @@
 		A6820AB92CD2C7FD003E50C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PM28RN486U;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ajxz.PokemonCardDetectionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -495,13 +662,12 @@
 		A6820ABA2CD2C7FD003E50C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PM28RN486U;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ajxz.PokemonCardDetectionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -515,14 +681,18 @@
 		A6820ABC2CD2C7FD003E50C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PM28RN486U;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ajxz.PokemonCardDetectionUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -533,14 +703,18 @@
 		A6820ABD2CD2C7FD003E50C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PM28RN486U;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ajxz.PokemonCardDetectionUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
